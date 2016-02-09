@@ -1,0 +1,269 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<kml xmlns='http://www.opengis.net/kml/2.2'>
+	<Document>
+		<name>ZWW Seminar "Mitarbeiter führen"</name>
+		<description><![CDATA[]]></description>
+		<Folder>
+			<name>Unbenannte Ebene</name>
+			<Placemark>
+				<name>Station 1</name>
+				<styleUrl>#icon-503-DB4436-nodesc</styleUrl>
+				<ExtendedData>
+				</ExtendedData>
+				<Point>
+					<coordinates>10.8933413,48.3341435,0.0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Station 2</name>
+				<styleUrl>#icon-503-DB4436-nodesc</styleUrl>
+				<ExtendedData>
+				</ExtendedData>
+				<Point>
+					<coordinates>10.8955836,48.3329595,0.0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Station 3</name>
+				<styleUrl>#icon-503-DB4436-nodesc</styleUrl>
+				<ExtendedData>
+				</ExtendedData>
+				<Point>
+					<coordinates>10.8987594,48.3328454,0.0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Station 4</name>
+				<styleUrl>#icon-503-DB4436-nodesc</styleUrl>
+				<ExtendedData>
+				</ExtendedData>
+				<Point>
+					<coordinates>10.8982229,48.3343146,0.0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Station 5</name>
+				<description><![CDATA[Beschreibung]]></description>
+				<styleUrl>#icon-503-DB4436</styleUrl>
+				<ExtendedData>
+				</ExtendedData>
+				<Point>
+					<coordinates>10.8978581,48.3364543,0.0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Station 6</name>
+				<styleUrl>#icon-503-DB4436-nodesc</styleUrl>
+				<ExtendedData>
+				</ExtendedData>
+				<Point>
+					<coordinates>10.8956909,48.3366397,0.0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Station 7</name>
+				<styleUrl>#icon-503-DB4436-nodesc</styleUrl>
+				<ExtendedData>
+				</ExtendedData>
+				<Point>
+					<coordinates>10.8955836,48.3349851,0.0</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Route von Universitätsstraße 16, 86159 Augsburg, Deutschland nach Universitätsstraße 16, 86159 Augsburg, Deutschland</name>
+			<Placemark>
+				<name>Route von Universitätsstraße 16, 86159 Augsburg, Deutschland nach Universitätsstraße 16, 86159 Augsburg, Deutschland</name>
+				<styleUrl>#line-1267FF-5-nodesc</styleUrl>
+				<ExtendedData>
+				</ExtendedData>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>10.89336,48.3342,0.0 10.89338,48.33419,0.0 10.89339,48.33419,0.0 10.89341,48.33419,0.0 10.89344,48.33419,0.0 10.8939,48.33421,0.0 10.89437,48.33422,0.0 10.89476,48.33422,0.0 10.89513,48.33423,0.0 10.89514,48.33408,0.0 10.89514,48.33404,0.0 10.89513,48.33402,0.0 10.89522,48.33387,0.0 10.89526,48.33364000000001,0.0 10.89525,48.33352,0.0 10.895190000000001,48.33336,0.0 10.89515,48.33334,0.0 10.89514,48.33331,0.0 10.89511,48.33327,0.0 10.89509,48.33322,0.0 10.895070000000002,48.33318,0.0 10.89506,48.33314,0.0 10.89506,48.3331,0.0 10.895070000000002,48.33307,0.0 10.89508,48.33304,0.0 10.8951,48.33302,0.0 10.89512,48.333,0.0 10.89514,48.33299000000001,0.0 10.89516,48.33298,0.0 10.895190000000001,48.33297,0.0 10.89521,48.33296,0.0 10.89525,48.332950000000004,0.0 10.89533,48.33294,0.0 10.89558,48.33293,0.0 10.8957,48.33292,0.0 10.89574,48.33292,0.0 10.89576,48.33291,0.0 10.89579,48.33291,0.0 10.89583,48.3329,0.0 10.89587,48.33288,0.0 10.89589,48.33287,0.0 10.89608,48.33281,0.0 10.89604,48.33271,0.0 10.89681,48.3328,0.0 10.89724,48.33281,0.0 10.8977,48.332820000000005,0.0 10.89784,48.332820000000005,0.0 10.89801,48.33281,0.0 10.89837,48.33279,0.0 10.89849,48.33284,0.0 10.89875,48.33285,0.0 10.89875,48.33291,0.0 10.898710000000001,48.33294,0.0 10.898710000000001,48.33325,0.0 10.8987,48.33349,0.0 10.8987,48.33365,0.0 10.89861,48.33365,0.0 10.89853,48.33373,0.0 10.89853,48.334,0.0 10.89861,48.33405,0.0 10.89863,48.33406,0.0 10.89836,48.33423,0.0 10.89824,48.3343,0.0 10.89825,48.33438,0.0 10.89824,48.33441,0.0 10.89823,48.33442000000001,0.0 10.89821,48.33444,0.0 10.898190000000001,48.33444,0.0 10.89817,48.33445,0.0 10.89802,48.33444,0.0 10.89765,48.33467,0.0 10.89761,48.3347,0.0 10.89763,48.33471,0.0 10.89765,48.33472,0.0 10.89771,48.33475,0.0 10.89773,48.33476,0.0 10.89776,48.33478,0.0 10.89778,48.33479,0.0 10.89778,48.3348,0.0 10.89779,48.3348,0.0 10.89779,48.33482,0.0 10.89779,48.33483,0.0 10.89778,48.33486,0.0 10.89778,48.33503,0.0 10.89776,48.33556,0.0 10.89764,48.33562,0.0 10.89762,48.33563,0.0 10.8976,48.33564,0.0 10.89759,48.33565,0.0 10.89758,48.33567,0.0 10.89757,48.33578,0.0 10.897550000000003,48.33609,0.0 10.89754,48.33613,0.0 10.89757,48.33619,0.0 10.89788,48.33641,0.0 10.89788,48.33645,0.0 10.89787,48.33658,0.0 10.89786,48.33686,0.0 10.89786,48.33688,0.0 10.89786,48.3369,0.0 10.89785,48.33691,0.0 10.89785,48.33693,0.0 10.89785,48.33694,0.0 10.89784,48.33695,0.0 10.89784,48.33696,0.0 10.89783,48.33697,0.0 10.89782,48.336980000000004,0.0 10.89777,48.33702000000001,0.0 10.8975,48.33718,0.0 10.89737,48.33725,0.0 10.89734,48.33726,0.0 10.89731,48.33727,0.0 10.89726,48.33728000000001,0.0 10.89721,48.33728000000001,0.0 10.89627,48.33726,0.0 10.896230000000001,48.33726,0.0 10.8962,48.33726,0.0 10.89617,48.33725,0.0 10.89615,48.33724,0.0 10.89613,48.33723,0.0 10.8961,48.33721,0.0 10.89607,48.33719,0.0 10.89596,48.33711,0.0 10.89589,48.33707,0.0 10.89585,48.33705,0.0 10.89583,48.33703,0.0 10.89581,48.337,0.0 10.89578,48.33696,0.0 10.89577,48.33692,0.0 10.895710000000001,48.33664,0.0 10.8957,48.33656,0.0 10.89552,48.33658,0.0 10.89555,48.3364,0.0 10.89554,48.33635,0.0 10.89553,48.33632,0.0 10.8955,48.33627,0.0 10.89545,48.33617,0.0 10.89542,48.3361,0.0 10.8954,48.33606,0.0 10.89537,48.33595,0.0 10.89533,48.33582,0.0 10.89531,48.33574,0.0 10.8953,48.33565,0.0 10.8953,48.33557,0.0 10.89531,48.33548,0.0 10.89534,48.3354,0.0 10.89537,48.33533,0.0 10.8954,48.33523,0.0 10.89543,48.33517,0.0 10.89547,48.33511,0.0 10.89549,48.33508,0.0 10.89553,48.33502,0.0 10.8956,48.33498,0.0 10.8957,48.3347,0.0 10.89573,48.33462,0.0 10.89573,48.3346,0.0 10.89574,48.33459,0.0 10.89576,48.33456,0.0 10.89577,48.33453,0.0 10.89577,48.33451,0.0 10.89577,48.33448,0.0 10.89576,48.33445,0.0 10.89575,48.33441,0.0 10.89574,48.33438,0.0 10.895720000000003,48.33433,0.0 10.895720000000003,48.33429000000001,0.0 10.89573,48.33424,0.0 10.89574,48.33421,0.0 10.89575,48.33418,0.0 10.89576,48.33414,0.0 10.89578,48.3341,0.0 10.89583,48.33403,0.0 10.89585,48.33399,0.0 10.89587,48.33397,0.0 10.89588,48.33393,0.0 10.89591,48.33390000000001,0.0 10.89591,48.33384,0.0 10.89541,48.33417,0.0 10.89539,48.33419,0.0 10.89537,48.3342,0.0 10.89536,48.33421,0.0 10.89534,48.33422,0.0 10.89531,48.33423,0.0 10.89513,48.33423,0.0 10.89476,48.33422,0.0 10.89437,48.33422,0.0 10.8939,48.33421,0.0 10.89344,48.33419,0.0 10.89341,48.33419,0.0 10.89339,48.33419,0.0 10.89338,48.33419,0.0 10.89336,48.3342,0.0 10.89335,48.3342,0.0</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Universitätsstraße 16, 86159 Augsburg, Deutschland</name>
+				<styleUrl>#icon-503-DB4436-nodesc</styleUrl>
+				<ExtendedData>
+				</ExtendedData>
+				<Point>
+					<coordinates>10.8933555,48.3342009,0.0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Station 2</name>
+				<styleUrl>#icon-503-DB4436-nodesc</styleUrl>
+				<ExtendedData>
+				</ExtendedData>
+				<Point>
+					<coordinates>10.8955804,48.3329257,0.0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Station 3</name>
+				<styleUrl>#icon-503-DB4436-nodesc</styleUrl>
+				<ExtendedData>
+				</ExtendedData>
+				<Point>
+					<coordinates>10.8987513,48.3328498,0.0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Station 4</name>
+				<styleUrl>#icon-503-DB4436-nodesc</styleUrl>
+				<ExtendedData>
+				</ExtendedData>
+				<Point>
+					<coordinates>10.8982389,48.3343013,0.0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Station 5</name>
+				<styleUrl>#icon-503-DB4436-nodesc</styleUrl>
+				<ExtendedData>
+				</ExtendedData>
+				<Point>
+					<coordinates>10.8978751,48.3364548,0.0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Station 6</name>
+				<styleUrl>#icon-503-DB4436-nodesc</styleUrl>
+				<ExtendedData>
+				</ExtendedData>
+				<Point>
+					<coordinates>10.8957118,48.3366379,0.0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Station 7</name>
+				<styleUrl>#icon-503-DB4436-nodesc</styleUrl>
+				<ExtendedData>
+				</ExtendedData>
+				<Point>
+					<coordinates>10.8955991,48.3349806,0.0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Universitätsstraße 16, 86159 Augsburg, Deutschland</name>
+				<styleUrl>#icon-503-DB4436-nodesc</styleUrl>
+				<ExtendedData>
+				</ExtendedData>
+				<Point>
+					<coordinates>10.8933535,48.3342023,0.0</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<Style id='icon-503-DB4436-normal'>
+			<IconStyle>
+				<color>ff3644DB</color>
+				<scale>1.1</scale>
+				<Icon>
+					<href>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+				</Icon>
+				<hotSpot x='16' y='31' xunits='pixels' yunits='insetPixels'>
+				</hotSpot>
+			</IconStyle>
+			<LabelStyle>
+				<scale>0.0</scale>
+			</LabelStyle>
+		</Style>
+		<Style id='icon-503-DB4436-highlight'>
+			<IconStyle>
+				<color>ff3644DB</color>
+				<scale>1.1</scale>
+				<Icon>
+					<href>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+				</Icon>
+				<hotSpot x='16' y='31' xunits='pixels' yunits='insetPixels'>
+				</hotSpot>
+			</IconStyle>
+			<LabelStyle>
+				<scale>1.1</scale>
+			</LabelStyle>
+		</Style>
+		<StyleMap id='icon-503-DB4436'>
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#icon-503-DB4436-normal</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#icon-503-DB4436-highlight</styleUrl>
+			</Pair>
+		</StyleMap>
+		<Style id='icon-503-DB4436-nodesc-normal'>
+			<IconStyle>
+				<color>ff3644DB</color>
+				<scale>1.1</scale>
+				<Icon>
+					<href>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+				</Icon>
+				<hotSpot x='16' y='31' xunits='pixels' yunits='insetPixels'>
+				</hotSpot>
+			</IconStyle>
+			<LabelStyle>
+				<scale>0.0</scale>
+			</LabelStyle>
+			<BalloonStyle>
+				<text><![CDATA[<h3>$[name]</h3>]]></text>
+			</BalloonStyle>
+		</Style>
+		<Style id='icon-503-DB4436-nodesc-highlight'>
+			<IconStyle>
+				<color>ff3644DB</color>
+				<scale>1.1</scale>
+				<Icon>
+					<href>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+				</Icon>
+				<hotSpot x='16' y='31' xunits='pixels' yunits='insetPixels'>
+				</hotSpot>
+			</IconStyle>
+			<LabelStyle>
+				<scale>1.1</scale>
+			</LabelStyle>
+			<BalloonStyle>
+				<text><![CDATA[<h3>$[name]</h3>]]></text>
+			</BalloonStyle>
+		</Style>
+		<StyleMap id='icon-503-DB4436-nodesc'>
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#icon-503-DB4436-nodesc-normal</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#icon-503-DB4436-nodesc-highlight</styleUrl>
+			</Pair>
+		</StyleMap>
+		<Style id='line-1267FF-5-nodesc-normal'>
+			<LineStyle>
+				<color>ffFF6712</color>
+				<width>5</width>
+			</LineStyle>
+			<BalloonStyle>
+				<text><![CDATA[<h3>$[name]</h3>]]></text>
+			</BalloonStyle>
+		</Style>
+		<Style id='line-1267FF-5-nodesc-highlight'>
+			<LineStyle>
+				<color>ffFF6712</color>
+				<width>8.0</width>
+			</LineStyle>
+			<BalloonStyle>
+				<text><![CDATA[<h3>$[name]</h3>]]></text>
+			</BalloonStyle>
+		</Style>
+		<StyleMap id='line-1267FF-5-nodesc'>
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#line-1267FF-5-nodesc-normal</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#line-1267FF-5-nodesc-highlight</styleUrl>
+			</Pair>
+		</StyleMap>
+	</Document>
+</kml>

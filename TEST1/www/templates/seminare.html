@@ -1,0 +1,18 @@
+<ion-view view-title="Seminare">
+  <ion-content>
+<!--      <div id="seminare-button-bar">
+          <div class="bar bar-header">
+              <div class="button-bar">
+                  <a class="button">Meine Kurse</a>
+                  <a class="button">Empfohlen</a>
+                  <a class="button">Alle</a>
+              </div>
+          </div>
+      </div> -->
+    <ion-list>
+      <ion-item ng-repeat="seminar in seminare" href="#/app/seminare/{{seminar.id}}">
+        {{seminar.title}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
