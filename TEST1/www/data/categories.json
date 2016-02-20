@@ -1,8 +1,8 @@
 [
-  {"name": "Business", "uid": 1},
-  {"name": "Family", "uid": 2},
-  {"name": "Hobbies", "uid": 3},
-  {"name": "Personality", "uid": 4},
-  {"name": "School", "uid": 5},
-  {"name": "Sports", "uid": 6}
+  {"name": "Business", "id": 1},
+  {"name": "Family", "id": 2},
+  {"name": "Hobbies", "id": 3},
+  {"name": "Personality", "id": 4},
+  {"name": "School", "id": 5},
+  {"name": "Sports", "id": 6}
 ]
