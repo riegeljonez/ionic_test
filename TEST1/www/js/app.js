@@ -114,7 +114,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage', 'starter.factories
         })
 
         .state('app.category', {
-            url: '/categories/:categoryName',
+            url: '/categories/:categoryID',
             views: {
                 'menuContent': {
                     templateUrl: 'templates/category.html',
@@ -123,8 +123,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage', 'starter.factories
             }
         })
 
-        .state('app.single', {
-            url: '/categories/:categoryId/:seminarId',
+        .state('app.seminar', {
+            url: '/categories/:categoryId/:seminarUID',
             views: {
                 'menuContent': {
                     templateUrl: 'templates/seminar.html',
