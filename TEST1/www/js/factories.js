@@ -77,7 +77,7 @@ angular.module('starter.factories', [])
 	};
 })
 /*===========================================================================
- FACTORY FOR FETCHING SEMINAR BY UID
+ FACTORY FOR FETCHING SEMINAR BY UID TO GET META FOR LISTING
  ===========================================================================*/
 .factory('seminarByUID', function($http) {
 	var getSeminar = function(uid) {
@@ -96,6 +96,146 @@ angular.module('starter.factories', [])
 		getSeminar: getSeminar
 	};
 })
+
+
+/*===========================================================================
+ FACTORY FOR CREATING AND INTERACTING LEAFLET MAP
+ ===========================================================================*/
+.factory('myMap', function($cordovaGeolocation, $http){
+	var getDefaultMap = function(){
+		
+		return {
+          defaults: {
+            tileLayer: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+            maxZoom: 18,
+            zoomControlPosition: 'bottomleft'
+          },
+          center: {
+	          lat : location.lat,
+	          lng : location.lng,
+	          zoom : 12
+        	},
+          markers: [],
+          events: {
+            map: {
+              enable: ['context'],
+              logic: 'emit'
+            }
+          }
+        };
+        
+        
+  
+       
+	};
+	
+	var showMyPosition = function(map){
+
+        $cordovaGeolocation
+          .getCurrentPosition()
+          .then(function (position) {
+            map.center.lat  = position.coords.latitude;
+            map.center.lng = position.coords.longitude;
+            map.center.zoom =18;
+
+            map.markers.push(
+            {
+              lat:position.coords.latitude,
+              lng:position.coords.longitude,
+              message: "You Are Here",
+              focus: true,
+              draggable: false
+            });
+			console.log(map.markers);
+          }, function(err) {
+            // error
+            console.log("Location error!");
+            console.log(err);
+          });
+		
+	}
+	
+	var showLessonsOnMap = function(seminarMeta, map){
+		
+		var articlesUrl = "data/" + seminarMeta.seminarFolder + "/course/en/articles.json";
+		
+		return $http.get(articlesUrl).then(function(response) {
+			
+			map.center.lat  = 47.618052;
+            map.center.lng = 10.710770;
+            map.center.zoom =17;
+			
+			for(var lesson in response.data){
+				var lessonMarker = {
+					lat: response.data[lesson].location.lat,
+					lng: response.data[lesson].location.lng,
+					message: response.data[lesson].displayTitle,
+					focus: true,
+					draggable: false
+				}
+				
+				map.markers.push(lessonMarker);
+				
+			}
+			
+			
+		});
+		
+		
+	}
+	
+	var buildLessonsWaypoints =function(seminarMeta){
+		var articlesUrl = "data/" + seminarMeta.seminarFolder + "/course/en/articles.json";
+		
+		var waypnts = [];
+		
+		return $http.get(articlesUrl).then(function(response) {
+			
+			for(var lesson in response.data){
+				
+				var lat= response.data[lesson].location.lat;
+				var lng = response.data[lesson].location.lng;
+				waypnts.push({latLng:L.latLng(lat,lng)});
+			}
+			
+			return waypnts;
+		});
+	}
+	
+	var drawRoute = function(waypnts){
+		
+		var map = L.map('map');
+		
+		map.setView([47.618052,10.710770],16);
+		
+		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+
+		}).addTo(map);
+		
+		/*var routingControl =L.Routing.control({
+			waypoints:waypnts,
+			draggableWaypoints:false
+		}).addTo(map);
+		*/
+		var marker = L.marker(L.latLng(47.616052,10.713750),{title:"blah"}).bindPopup("<b>Hello world!</b><br>I am a popup.").addTo(map);
+		marker.openPopup();
+		
+		//console.log(routingControl);
+		console.log(map);
+		console.log();
+	}
+	
+	return {
+		getDefaultMap: getDefaultMap,
+		showMyPosition: showMyPosition, 
+		showLessonsOnMap: showLessonsOnMap,
+		buildLessonsWaypoints: buildLessonsWaypoints,
+		drawRoute: drawRoute
+	};
+
+})
+
+
 /*===========================================================================
 FACTORY FOR CHECKING ON CONNECTIVITY STATES(for Mobile and Desktop):
 ===========================================================================*/

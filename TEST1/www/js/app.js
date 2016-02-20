@@ -8,7 +8,7 @@
 var db = null;
 
 
-angular.module('starter', ['ionic', 'ngCordova', 'ngStorage', 'starter.factories', 'starter.controllers'])
+angular.module('starter', ['ionic', 'ngCordova', 'ngStorage', 'starter.factories', 'leaflet-directive', 'starter.controllers'])
 
 
 .run(function ($ionicPlatform, $cordovaSQLite) { //https://blog.nraboy.com/2014/11/use-sqlite-instead-local-storage-ionic-framework/

@@ -48,11 +48,35 @@ angular.module('starter.controllers', []).controller('AppCtrl', function($scope,
 	catch (function() {
 		$scope.error = 'unable to get the categories';
 	});
-}).controller('SeminarCtrl', function($scope, $stateParams, seminarByUID) {
+}).controller('SeminarCtrl', function($scope, $stateParams, seminarByUID, $cordovaGeolocation, myMap) {
 	
+		
 	seminarByUID.getSeminar($stateParams.seminarUID).then(function(data) {
+		
 		$scope.seminarMeta = data;
+		
+	
+		//$scope.map = myMap.getDefaultMap();        
+	        
+		//myMap.showMyPosition($scope.map);
+		/*
+		myMap.showLessonsOnMap($scope.seminarMeta, $scope.map).then(function(data){
+			console.log($scope.map);
+			myMap.drawRoute($scope.map);
+		});
+		*/
+		
+		myMap.buildLessonsWaypoints($scope.seminarMeta).then(function(response){
+			
+			myMap.drawRoute(response);
+			
+		});
+		
 	});
+	
+	
+	
+
 	
 	
 })
