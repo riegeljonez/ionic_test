@@ -195,7 +195,7 @@ angular.module('starter.factories', [])
 				
 				var lat= response.data[lesson].location.lat;
 				var lng = response.data[lesson].location.lng;
-				waypnts.push(L.latLng(lat,lng));
+				waypnts.push({latLng:L.latLng(lat,lng)});
 			}
 			
 			return waypnts;
@@ -204,20 +204,24 @@ angular.module('starter.factories', [])
 	
 	var drawRoute = function(waypnts){
 		
-		
-		
 		var map = L.map('map');
+		
+		map.setView([47.618052,10.710770],16);
 		
 		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 
-		
 		}).addTo(map);
 		
-		L.Routing.control({
+		/*var routingControl =L.Routing.control({
 			waypoints:waypnts,
 			draggableWaypoints:false
 		}).addTo(map);
-		console.log(L);
+		*/
+		L.marker(L.latLng(47.616052,10.713750),{title:"blah"}).bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup().addTo(map);
+		
+		//console.log(routingControl);
+		console.log(map);
+		console.log();
 	}
 	
 	return {
