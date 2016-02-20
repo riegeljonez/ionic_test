@@ -7,7 +7,8 @@
     "_classes": "",
     "body": "<p><strong>HALLO TEST FRAGE 1</strong></p>\n",
     "displayTitle": "Artikel 1",
-    "title": "Artikel 1"
+    "title": "Artikel 1",
+    "location": {"lat":47.618052,"lng":10.710770}
   },
   {
     "_id": "569df8bf1b90b59484e1e057",
@@ -16,8 +17,9 @@
     "_isOptional": false,
     "_classes": "",
     "body": "",
-    "displayTitle": "Article title",
-    "title": "Article title"
+    "displayTitle": "Article 2",
+    "title": "Article title",
+    "location": {"lat":47.618688,"lng":10.709999}
   },
   {
     "_id": "569df8c01b90b59484e1e05a",
@@ -26,8 +28,9 @@
     "_isOptional": false,
     "_classes": "",
     "body": "",
-    "displayTitle": "Article title",
-    "title": "Article title"
+    "displayTitle": "Article 3",
+    "title": "Article title",
+    "location": {"lat":47.619426,"lng":10.709675}
   },
   {
     "_id": "569cc5261b90b59484e1e04d",
@@ -36,8 +39,9 @@
     "_isOptional": false,
     "_classes": "",
     "body": "<p style=\"text-align: center;\"><span style=\"color:#006400\"><em><u><strong><span style=\"background-color:#808080\">HALLO TEST 2</span></strong></u></em></span></p>\n",
-    "displayTitle": "Article 2",
-    "title": "Article 2"
+    "displayTitle": "Article 4",
+    "title": "Article 2",
+    "location": {"lat":47.620155,"lng":10.711244}
   },
   {
     "_id": "569df8e91b90b59484e1e061",
@@ -46,7 +50,8 @@
     "_isOptional": false,
     "_classes": "",
     "body": "",
-    "displayTitle": "Article title",
-    "title": "Article title"
+    "displayTitle": "Article 5",
+    "title": "Article title",
+    "location": {"lat":47.619012,"lng":10.711523}
   }
 ]

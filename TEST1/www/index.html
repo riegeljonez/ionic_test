@@ -5,7 +5,14 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>ZWW App</title>
 
+<style>
+.scroll, .angular-leaflet-map , #map{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}	
 
+</style>
 
     <!-- compiled css output -->
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -15,6 +22,16 @@
 
     <!-- add more libraries -->
     <script src="lib/ngstorage/ngStorage.min.js"></script>
+
+	<!--Leaflet -->
+	<script src="lib/leaflet/leaflet.js"></script>
+	<link href="lib/leaflet/leaflet.css" rel="stylesheet">
+	<script src="lib/leaflet/angular-leaflet-directive.min.js"></script>
+	
+	<!--Leaflet Routing Machine-->
+	<script src="lib/leaflet-routing-machine/leaflet-routing-machine.js"></script>
+	<link href="lib/leaflet-routing-machine/leaflet-routing-machine.css" rel="stylesheet">
+	
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="lib/ngCordova/dist/ng-cordova.js"></script>

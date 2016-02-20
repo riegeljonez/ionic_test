@@ -5,7 +5,7 @@
       "seminarName": "Personalführung1",
       "seminarKategorieID":1,
       "seminarLaufart":"Sightseeing",
-      "seminarFolder": "seminar4",
+      "seminarFolder": "testendes-seminar",
       "seminarDauer": "120 Minuten",
       "anzahlLessons": 3
     },
@@ -14,7 +14,7 @@
       "seminarName": "PersonalführungScheissen",
       "seminarKategorieID":2,
       "seminarLaufart":"Sightseeing",
-      "seminarFolder": "seminar4",
+      "seminarFolder": "testendes-seminar",
       "seminarDauer": "120 Minuten",
       "anzahlLessons": 3
     },
@@ -23,7 +23,7 @@
       "seminarName": "Personalführung2",
       "seminarKategorieID":1,
       "seminarLaufart":"Sightseeing",
-      "seminarFolder": "seminar4",
+      "seminarFolder": "testendes-seminar",
       "seminarDauer": "120 Minuten",
       "anzahlLessons": 3
     }
