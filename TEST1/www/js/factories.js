@@ -1,6 +1,119 @@
 angular.module('starter.factories', [])
 
 /*===========================================================================
+ FACTORY FOR FETCHING CATEGORIES FROM JSON
+ ===========================================================================*/
+
+
+.factory('categoriesService', function($http) {
+    var getCategoriesUsedBySeminare = function() {
+        return $http.get('data/alleSeminare.json').then(function (response) {
+
+
+            var categories= [];
+
+            for (var seminar in response.data.alleSeminare ){
+
+                var catID = response.data.alleSeminare[seminar].seminarKategorieID;
+                console.log(catID);
+                var catAlreadyExists = false;
+
+                var catObj;
+                getCatByID(catID).then(function(data) {
+                    console.log(data);
+                    catObj = data;
+
+                });
+                console.log(catObj);
+
+                for (var category in categories){
+
+                    if(categories[category].uid == catID ){
+                        catAlreadyExists = true;
+                    }
+                }
+                if(!catAlreadyExists){
+
+                    categories.push(catObj);
+                }
+            }
+
+            return categories;
+        });
+    };
+
+    var getCatByID = function(id) {
+        return $http.get('data/categories.json').then(function (response) {
+
+            var kategorien = response.data;
+
+            for(var kategorie in kategorien){
+                if (kategorien[kategorie].uid==id){
+
+                    return kategorien[kategorie];
+                }
+            }
+
+            return {"name": "Kategorie nicht gefunden", "id": -1};
+
+        });
+    };
+    return {
+        getCategoriesUsedBySeminare: getCategoriesUsedBySeminare,
+        getCatByID: function() {getCatByID(id);}
+    };
+})
+
+/*===========================================================================
+ FACTORY FOR FETCHING SEMINARE BY CATEGORY
+ ===========================================================================*/
+
+
+.factory('seminareByCategoryService', function($http) {
+        var getSeminare = function($stateParams) {
+            return $http.get('data/alleSeminare.json').then(function (response) {
+
+                var seminare = [];
+                var alleSeminare = response.data.alleSeminare;
+
+                for (var seminar in alleSeminare ){
+                    if (alleSeminare[seminar].seminarKategorie == $stateParams.categoryName){
+                        seminare.push(alleSeminare[seminar]);
+                    }
+                }
+                return seminare;
+            });
+        };
+        return {
+            getSeminare: getSeminare
+        };
+    })
+
+/*===========================================================================
+ FACTORY FOR FETCHING SEMINAR BY NAME
+ ===========================================================================*/
+
+
+.factory('seminarByName', function($http) {
+    var getSeminare = function($stateParams) {
+        return $http.get('data/alleSeminare.json').then(function (response) {
+
+            var seminare = [];
+            var alleSeminare = response.data.alleSeminare;
+
+            for (var seminar in alleSeminare ){
+                if (alleSeminare[seminar].seminarKategorie == $stateParams.categoryName){
+                    seminare.push(alleSeminare[seminar]);
+                }
+            }
+            return seminare;
+        });
+    };
+    return {
+        getSeminare: getSeminare
+    };
+})
+/*===========================================================================
 FACTORY FOR CHECKING ON CONNECTIVITY STATES(for Mobile and Desktop):
 ===========================================================================*/
 

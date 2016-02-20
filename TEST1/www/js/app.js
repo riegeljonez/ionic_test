@@ -8,7 +8,7 @@
 var db = null;
 
 
-angular.module('starter', ['ionic', 'ngCordova', 'starter.factories', 'starter.controllers'])
+angular.module('starter', ['ionic', 'ngCordova', 'ngStorage', 'starter.factories', 'starter.controllers'])
 
 
 .run(function ($ionicPlatform, $cordovaSQLite) { //https://blog.nraboy.com/2014/11/use-sqlite-instead-local-storage-ionic-framework/
@@ -83,7 +83,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.factories', 'starter.c
             }
         })
 
-        .state('app.seminare', {
+       /* .state('app.seminare', {
             url: '/seminare',
             views: {
                 'menuContent': {
@@ -92,9 +92,39 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.factories', 'starter.c
                 }
             }
         })
+*/
+        .state('app.testendesSeminar', {
+            url: '/testendesSeminar',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/testendesSeminar.html',
+                    controller: 'TestendesSeminarCtrl'
+                }
+            }
+        })
+
+        .state('app.categories', {
+            url: '/categories',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/categories.html',
+                    controller: 'CategoriesCtrl'
+                }
+            }
+        })
+
+        .state('app.category', {
+            url: '/categories/:categoryName',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/category.html',
+                    controller: 'CategoryCtrl'
+                }
+            }
+        })
 
         .state('app.single', {
-            url: '/seminare/:seminarId',
+            url: '/categories/:categoryId/:seminarId',
             views: {
                 'menuContent': {
                     templateUrl: 'templates/seminar.html',
@@ -103,7 +133,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.factories', 'starter.c
             }
         });
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/app/seminare');
+    $urlRouterProvider.otherwise('/app/categories');
 });
 
 

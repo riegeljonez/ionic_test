@@ -1,0 +1,52 @@
+[
+  {
+    "_id": "569cc4671b90b59484e1e04a",
+    "_parentId": "569cc4671b90b59484e1e049",
+    "_type": "article",
+    "_isOptional": false,
+    "_classes": "",
+    "body": "<p><strong>HALLO TEST FRAGE 1</strong></p>\n",
+    "displayTitle": "Artikel 1",
+    "title": "Artikel 1"
+  },
+  {
+    "_id": "569df8bf1b90b59484e1e057",
+    "_parentId": "569df8be1b90b59484e1e056",
+    "_type": "article",
+    "_isOptional": false,
+    "_classes": "",
+    "body": "",
+    "displayTitle": "Article title",
+    "title": "Article title"
+  },
+  {
+    "_id": "569df8c01b90b59484e1e05a",
+    "_parentId": "569df8c01b90b59484e1e059",
+    "_type": "article",
+    "_isOptional": false,
+    "_classes": "",
+    "body": "",
+    "displayTitle": "Article title",
+    "title": "Article title"
+  },
+  {
+    "_id": "569cc5261b90b59484e1e04d",
+    "_parentId": "569cc4671b90b59484e1e049",
+    "_type": "article",
+    "_isOptional": false,
+    "_classes": "",
+    "body": "<p style=\"text-align: center;\"><span style=\"color:#006400\"><em><u><strong><span style=\"background-color:#808080\">HALLO TEST 2</span></strong></u></em></span></p>\n",
+    "displayTitle": "Article 2",
+    "title": "Article 2"
+  },
+  {
+    "_id": "569df8e91b90b59484e1e061",
+    "_parentId": "569df8be1b90b59484e1e056",
+    "_type": "article",
+    "_isOptional": false,
+    "_classes": "",
+    "body": "",
+    "displayTitle": "Article title",
+    "title": "Article title"
+  }
+]

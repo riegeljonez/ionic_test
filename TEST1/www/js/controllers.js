@@ -41,19 +41,92 @@ angular.module('starter.controllers', [])
         };
     })
 
-    .controller('SeminareCtrl', function ($scope) {
-        $scope.seminare = [
-            {title: 'Mitarbeiter führen', id: 1},
-            {title: 'Konfliktmanagement', id: 2},
-            {title: 'Seminar Seminar', id: 3},
-            {title: 'Beispiel Seminar', id: 4},
-            {title: 'Seminar Beispiel', id: 5},
-            {title: 'Beispiel Beispiel', id: 6}
-        ];
+    .controller('CategoriesCtrl', function ($scope, categoriesService){
+        categoriesService.getCategoriesUsedBySeminare().then(function(data) {
+                $scope.categories = data;
+
+            }).catch(function() {
+                $scope.error = 'unable to get the categories';
+            });
+
+        // abstract this controller into the router http://learn.ionicframework.com/formulas/data-the-right-way/ ?
+
+        /*$scope.categories = [
+            {title: 'Business', id: 1},
+            {title: 'Family', id: 2},
+            {title: 'Hobbies', id: 3},
+            {title: 'Personality', id: 4},
+            {title: 'School', id: 5},
+            {title: 'Sports', id: 6}
+        ];*/
+
+    })
+    .controller('CategoryCtrl', function ($scope, $stateParams, seminareByCategoryService) {
+        seminareByCategoryService.getSeminare($stateParams).then(function(data) {
+            $scope.seminare = data;
+
+        }).catch(function() {
+            $scope.error = 'unable to get the categories';
+        });
+
     })
 
+
     .controller('SeminarCtrl', function ($scope, $stateParams) {
+
     })
+
+    // display list of all seminar-categories
+    // http://stackoverflow.com/questions/16930473/angularjs-factory-http-get-json-file
+    // https://devdactic.com/improving-rest-with-ngresource/
+
+    // display list of a certain category of seminars
+
+    // know where the course files are, if not there already, download them
+
+    // Given is a route.json File inside the adapt course folder (somehow transformed from a kml or exported from a map, eg geoJSON)
+
+    // Display the coordinates and routes from the route.json on a map
+
+    // read the markers positions of the route and save them as centers of geofences
+
+    // say a lesson becomes "active" if youre inside the geofence of the lesson
+
+    //
+
+.controller('TestendesSeminarCtrl', function ($scope) {
+
+    $scope.openInExternalBrowser = function()
+    {
+        // Open in external browser
+        window.open('data/testendes-seminar/index.html','_system','location=yes');
+    };
+
+    $scope.openInAppBrowser = function()
+    {
+        // Open in app browser
+        window.open('data/testendes-seminar/index.html','_blank');
+    };
+
+    $scope.openCordovaWebView = function()
+    {
+        // Open cordova webview if the url is in the whitelist otherwise opens in app browser
+        window.open('data/testendes-seminar/index.html','_self');
+        /*openCordovaWebView.addEventListener('loadstop', function(event) {
+            if (event.url.match("../../app/categories")) {
+                openCordovaWebView.close();
+            }
+        }); */
+    };
+/*
+        var ref = window.open('data/testendes-seminar/index2.html', '_blank');
+        ref.addEventListener('loadstop', function(event) {
+            if (event.url.match("mobile/close")) {
+                ref.close();
+            }
+        });
+*/
+})
 
 
     /*===========================================================================
@@ -301,8 +374,10 @@ angular.module('starter.controllers', [])
                 };
 
 */
+//ATTEMPT FOR STORAGE WITH DATABASES
 // https://blog.nraboy.com/2014/11/use-sqlite-instead-local-storage-ionic-framework/
-                $scope.insert = function(firstname, lastname) {
+
+               /* $scope.insert = function(firstname, lastname) {
                     var query = "INSERT INTO people (firstname, lastname) VALUES (?,?)";
                     $cordovaSQLite.execute(db, query, [firstname, lastname]).then(function(res) {
                         console.log("INSERT ID -> " + res.insertId);
@@ -322,7 +397,22 @@ angular.module('starter.controllers', [])
                     }, function (err) {
                         console.error(err);
                     });
-                }
+                }*/
+
+                var route_points = {
+                    name: 'Thoughts',
+                    text: 'Today was a good day'
+                };
+
+                window.localStorage['route_points'] = JSON.stringify(route_points);
+
+                var route_points = JSON.parse(window.localStorage['route_points'] || '{}');
+
+
+
+
+
+
 
 
                 var infoWindow = new google.maps.InfoWindow({

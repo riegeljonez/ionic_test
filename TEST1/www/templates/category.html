@@ -1,0 +1,10 @@
+<ion-view cache-view="false">
+    <ion-nav-title>Change me!</ion-nav-title>
+    <ion-content>
+        <ion-list>
+            <ion-item ng-repeat="seminar in seminare" href="#/app/categories/{{seminar.seminarKategorie}}/{{seminar.seminarName}}">
+                {{seminar.seminarName}}
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

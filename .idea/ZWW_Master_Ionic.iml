@@ -3,6 +3,7 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/TEST1/platforms" />
+      <excludeFolder url="file://$MODULE_DIR$/TEST1/plugins/cordova-sqlite-storage/spec/platforms" />
       <excludeFolder url="file://$MODULE_DIR$/adapt_authoring/node_modules/grunt-contrib-jshint/node_modules/jshint/src/platforms" />
     </content>
     <orderEntry type="inheritedJdk" />

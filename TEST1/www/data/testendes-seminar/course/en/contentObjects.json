@@ -1,0 +1,42 @@
+[
+  {
+    "_id": "569cc4671b90b59484e1e049",
+    "_parentId": "course",
+    "_type": "page",
+    "_graphic": {
+      "alt": "",
+      "src": ""
+    },
+    "_isOptional": false,
+    "duration": "",
+    "linkText": "View",
+    "_classes": "",
+    "body": "<p>hallohallo</p>\n",
+    "displayTitle": "PAGE 1",
+    "title": "PAGE 1"
+  },
+  {
+    "_id": "569df8be1b90b59484e1e056",
+    "_parentId": "course",
+    "_type": "page",
+    "_isOptional": false,
+    "duration": "",
+    "linkText": "View",
+    "_classes": "",
+    "body": "",
+    "displayTitle": "Page title",
+    "title": "Page title"
+  },
+  {
+    "_id": "569df8c01b90b59484e1e059",
+    "_parentId": "course",
+    "_type": "page",
+    "_isOptional": false,
+    "duration": "",
+    "linkText": "View",
+    "_classes": "",
+    "body": "",
+    "displayTitle": "Page title",
+    "title": "Page title"
+  }
+]

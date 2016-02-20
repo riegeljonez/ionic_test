@@ -1,0 +1,99 @@
+[
+  {
+    "_id": "569cc4fd1b90b59484e1e04c",
+    "_parentId": "569cc4681b90b59484e1e04b",
+    "_type": "component",
+    "_layout": "full",
+    "body": "<p>testitest</p>\n",
+    "displayTitle": "Component title",
+    "title": "Component title",
+    "_isOptional": false,
+    "_classes": "",
+    "_component": "text",
+    "instruction": "Do this, do that."
+  },
+  {
+    "_id": "569cc5451b90b59484e1e04f",
+    "_parentId": "569cc5261b90b59484e1e04e",
+    "_type": "component",
+    "_layout": "full",
+    "body": "",
+    "displayTitle": "Component title",
+    "title": "Component title",
+    "_isOptional": false,
+    "_classes": "",
+    "_component": "accordion"
+  },
+  {
+    "_id": "569df8d41b90b59484e1e05c",
+    "_parentId": "569df8bf1b90b59484e1e058",
+    "_type": "component",
+    "_layout": "full",
+    "body": "",
+    "displayTitle": "Component title",
+    "title": "Component title",
+    "_isOptional": false,
+    "_classes": "",
+    "_component": "accordion"
+  },
+  {
+    "_id": "569df8db1b90b59484e1e05e",
+    "_parentId": "569df8d61b90b59484e1e05d",
+    "_type": "component",
+    "_layout": "full",
+    "body": "",
+    "displayTitle": "Component title",
+    "title": "Component title",
+    "_isOptional": false,
+    "_classes": "",
+    "_component": "blank"
+  },
+  {
+    "_id": "569df8e71b90b59484e1e060",
+    "_parentId": "569df8e11b90b59484e1e05f",
+    "_type": "component",
+    "_layout": "full",
+    "body": "",
+    "displayTitle": "Component title",
+    "title": "Component title",
+    "_isOptional": false,
+    "_classes": "",
+    "_component": "media"
+  },
+  {
+    "_id": "569df8f01b90b59484e1e063",
+    "_parentId": "569df8ea1b90b59484e1e062",
+    "_type": "component",
+    "_layout": "full",
+    "body": "",
+    "displayTitle": "Component title",
+    "title": "Component title",
+    "_isOptional": false,
+    "_classes": "",
+    "_component": "hotgraphic"
+  },
+  {
+    "_id": "569df9001b90b59484e1e064",
+    "_parentId": "569df8c01b90b59484e1e05b",
+    "_type": "component",
+    "_layout": "full",
+    "body": "",
+    "displayTitle": "Component title",
+    "title": "Component title",
+    "_isOptional": false,
+    "_classes": "",
+    "_component": "slider"
+  },
+  {
+    "_id": "569df90b1b90b59484e1e066",
+    "_parentId": "569df9031b90b59484e1e065",
+    "_type": "component",
+    "_layout": "full",
+    "body": "",
+    "displayTitle": "Component title",
+    "title": "Component title",
+    "_isOptional": false,
+    "_classes": "",
+    "_component": "textinput"
+  }
+]
