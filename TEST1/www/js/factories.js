@@ -217,7 +217,8 @@ angular.module('starter.factories', [])
 			draggableWaypoints:false
 		}).addTo(map);
 		*/
-		L.marker(L.latLng(47.616052,10.713750),{title:"blah"}).bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup().addTo(map);
+		var marker = L.marker(L.latLng(47.616052,10.713750),{title:"blah"}).bindPopup("<b>Hello world!</b><br>I am a popup.").addTo(map);
+		marker.openPopup();
 		
 		//console.log(routingControl);
 		console.log(map);
