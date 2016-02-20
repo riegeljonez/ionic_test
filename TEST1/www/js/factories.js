@@ -4,16 +4,16 @@ angular.module('starter.factories', [])
  ===========================================================================*/
 .factory('categoriesService', function($http) {
 	var getCategoriesUsedBySeminare = function() {
-			
+
 			var categories = [];
 			return $http.get('data/alleSeminare.json').then(function(response) {
-				
-				
+
+
 				for (var seminar in response.data.alleSeminare) {
 					var catID = response.data.alleSeminare[seminar].seminarKategorieID;
 
-					
-					getCatByID(catID).then(function(response){
+
+					getCatByID(catID).then(function(response) {
 						var catAlreadyExists = false;
 						for (var category in categories) {
 							if (categories[category].id == response.id) {
@@ -23,14 +23,13 @@ angular.module('starter.factories', [])
 						if (!catAlreadyExists) {
 							categories.push(response);
 						}
-					
-						
+
+
 						return response;
-						
+
 					}); //.then(function(response){console.log(categories);})
-					
 				}
-				
+
 				return categories;
 			});
 		};
@@ -53,7 +52,6 @@ angular.module('starter.factories', [])
 		getCategoriesUsedBySeminare: getCategoriesUsedBySeminare,
 		getCatByID: getCatByID
 		//function (id){getCatByID(id);}
-		
 	};
 })
 /*===========================================================================
@@ -89,7 +87,9 @@ angular.module('starter.factories', [])
 						return alleSeminare[seminar];
 					}
 				}
-				return {"seminarName":"Seminar zur UID nicht gefunden"};
+				return {
+					"seminarName": "Seminar zur UID nicht gefunden"
+				};
 			});
 		};
 	return {
@@ -101,133 +101,160 @@ angular.module('starter.factories', [])
 /*===========================================================================
  FACTORY FOR CREATING AND INTERACTING LEAFLET MAP
  ===========================================================================*/
-.factory('myMap', function($cordovaGeolocation, $http){
-	var getDefaultMap = function(){
-		
-		return {
-          defaults: {
-            tileLayer: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
-            maxZoom: 18,
-            zoomControlPosition: 'bottomleft'
-          },
-          center: {
-	          lat : location.lat,
-	          lng : location.lng,
-	          zoom : 12
-        	},
-          markers: [],
-          events: {
-            map: {
-              enable: ['context'],
-              logic: 'emit'
-            }
-          }
-        };
-        
-        
-  
-       
-	};
-	
-	var showMyPosition = function(map){
+.factory('myMap', function($cordovaGeolocation, $http) {
+	var getDefaultMap = function() {
 
-        $cordovaGeolocation
-          .getCurrentPosition()
-          .then(function (position) {
-            map.center.lat  = position.coords.latitude;
-            map.center.lng = position.coords.longitude;
-            map.center.zoom =18;
+			return {
+				defaults: {
+					tileLayer: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+					maxZoom: 18,
+					zoomControlPosition: 'bottomleft'
+				},
+				center: {
+					lat: location.lat,
+					lng: location.lng,
+					zoom: 12
+				},
+				markers: [],
+				events: {
+					map: {
+						enable: ['context'],
+						logic: 'emit'
+					}
+				}
+			};
 
-            map.markers.push(
-            {
-              lat:position.coords.latitude,
-              lng:position.coords.longitude,
-              message: "You Are Here",
-              focus: true,
-              draggable: false
-            });
-			console.log(map.markers);
-          }, function(err) {
-            // error
-            console.log("Location error!");
-            console.log(err);
-          });
-		
-	}
-	
-	var showLessonsOnMap = function(seminarMeta, map){
-		
-		var articlesUrl = "data/" + seminarMeta.seminarFolder + "/course/en/articles.json";
-		
-		return $http.get(articlesUrl).then(function(response) {
-			
-			map.center.lat  = 47.618052;
-            map.center.lng = 10.710770;
-            map.center.zoom =17;
-			
-			for(var lesson in response.data){
-				var lessonMarker = {
-					lat: response.data[lesson].location.lat,
-					lng: response.data[lesson].location.lng,
-					message: response.data[lesson].displayTitle,
+
+
+
+		};
+
+	var showMyPosition = function(map) {
+
+			$cordovaGeolocation.getCurrentPosition().then(function(position) {
+				map.center.lat = position.coords.latitude;
+				map.center.lng = position.coords.longitude;
+				map.center.zoom = 18;
+
+				map.markers.push({
+					lat: position.coords.latitude,
+					lng: position.coords.longitude,
+					message: "You Are Here",
 					focus: true,
 					draggable: false
-				}
-				
-				map.markers.push(lessonMarker);
-				
-			}
-			
-			
-		});
-		
-		
-	}
-	
-	var buildLessonsWaypoints =function(seminarMeta){
-		var articlesUrl = "data/" + seminarMeta.seminarFolder + "/course/en/articles.json";
-		
-		var waypnts = [];
-		
-		return $http.get(articlesUrl).then(function(response) {
-			
-			for(var lesson in response.data){
-				
-				var lat= response.data[lesson].location.lat;
-				var lng = response.data[lesson].location.lng;
-				waypnts.push({latLng:L.latLng(lat,lng)});
-			}
-			
-			return waypnts;
-		});
-	}
-	
-	var drawRoute = function(waypnts){
-		
-		var map = L.map('map');
-		
-		map.setView([47.618052,10.710770],16);
-		
-		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+				});
+				console.log(map.markers);
+			}, function(err) {
+				// error
+				console.log("Location error!");
+				console.log(err);
+			});
 
-		}).addTo(map);
-		
-		/*var routingControl =L.Routing.control({
-			waypoints:waypnts,
-			draggableWaypoints:false
-		}).addTo(map);
-		*/
-		var marker = L.marker(L.latLng(47.616052,10.713750),{title:"blah"}).bindPopup("<b>Hello world!</b><br>I am a popup.").addTo(map);
-		marker.openPopup();
-		
-		//console.log(routingControl);
-		console.log(map);
-		console.log();
-	}
-	
+		}
+
+	var showLessonsOnMap = function(seminarMeta, map) {
+
+			var articlesUrl = "data/" + seminarMeta.seminarFolder + "/course/en/articles.json";
+
+			return $http.get(articlesUrl).then(function(response) {
+
+				map.center.lat = 47.618052;
+				map.center.lng = 10.710770;
+				map.center.zoom = 17;
+
+				for (var lesson in response.data) {
+					var lessonMarker = {
+						lat: response.data[lesson].location.lat,
+						lng: response.data[lesson].location.lng,
+						message: response.data[lesson].displayTitle,
+						focus: true,
+						draggable: false
+					}
+
+					map.markers.push(lessonMarker);
+
+				}
+
+
+			});
+
+
+		}
+
+	var buildLessonsWaypoints = function(seminarMeta) {
+			var articlesUrl = "data/" + seminarMeta.seminarFolder + "/course/en/articles.json";
+
+			var waypnts = [];
+
+			return $http.get(articlesUrl).then(function(response) {
+
+				for (var lesson in response.data) {
+
+					var lat = response.data[lesson].location.lat;
+					var lng = response.data[lesson].location.lng;
+					waypnts.push({
+						latLng: L.latLng(lat, lng)
+					});
+				}
+
+				return waypnts;
+			});
+		}
+
+	var drawRoute = function(waypnts) {
+
+			L.Map = L.Map.extend({
+				openPopup: function(popup) {
+					//this.closePopup();  
+					this._popup = popup;
+
+					return this.addLayer(popup).fire('popupopen', {
+						popup: this._popup
+					});
+				}
+			});
+
+			var map = new L.Map('map', {
+				center: [47.618052, 10.710770],
+				zoom: 16
+			});
+
+			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+
+			}).addTo(map);
+
+			var markers = [];
+
+			var routingControl = L.Routing.control({
+				waypoints: waypnts,
+				draggableWaypoints: false,
+				createMarker: function(waypointIndex, waypoint, numberOfWaypoints) {
+
+					var marker = L.marker(waypoint.latLng, {
+						title: "blah"
+					});
+
+					marker.bindPopup("<b>Hello world!</b><br>I am a popup.");
+
+
+					markers.push(marker);
+
+					return marker;
+				}
+			}).addTo(map);
+
+
+			// alle Popups öffnen
+			markers.forEach(function(marker) {
+				marker.openPopup();
+			});
+			routingControl.hide();
+
+		}
+
 	return {
 		getDefaultMap: getDefaultMap,
-		showMyPosition: showMyPosition, 
+		showMyPosition: showMyPosition,
 		showLessonsOnMap: showLessonsOnMap,
 		buildLessonsWaypoints: buildLessonsWaypoints,
 		drawRoute: drawRoute
