@@ -129,27 +129,72 @@ angular.module('starter.factories', [])
 
 		};
 
-	var showMyPosition = function(map) {
+	var trackMyPosition = function(map) {
 
-			$cordovaGeolocation.getCurrentPosition().then(function(position) {
-				map.center.lat = position.coords.latitude;
-				map.center.lng = position.coords.longitude;
-				map.center.zoom = 18;
 
-				map.markers.push({
-					lat: position.coords.latitude,
-					lng: position.coords.longitude,
-					message: "You Are Here",
-					focus: true,
-					draggable: false
-				});
-				console.log(map.markers);
-			}, function(err) {
-				// error
-				console.log("Location error!");
-				console.log(err);
-			});
+			var lc = L.control.locate({
+				position: 'topleft',
+				// set the location of the control
+				layer: new L.LayerGroup(),
+				// use your own layer for the location marker
+				drawCircle: true,
+				// controls whether a circle is drawn that shows the uncertainty about the location
+				follow: true,
+				// follow the user's location
+				setView: false,
+				// automatically sets the map view to the user's location, enabled if `follow` is true
+				keepCurrentZoomLevel: false,
+				// keep the current map zoom level when displaying the user's location. (if `false`, use maxZoom)
+				stopFollowingOnDrag: false,
+				// stop following when the map is dragged if `follow` is true (deprecated, see below)
+				remainActive: false,
+				// if true locate control remains active on click even if the user's location is in view.
+				markerClass: L.circleMarker,
+				// L.circleMarker or L.marker
+				circleStyle: {},
+				// change the style of the circle around the user's location
+				markerStyle: {},
+				followCircleStyle: {},
+				// set difference for the style of the circle around the user's location while following
+				followMarkerStyle: {},
+				icon: 'fa fa-map-marker',
+				// class for icon, fa-location-arrow or fa-map-marker
+				iconLoading: 'fa fa-spinner fa-spin',
+				// class for loading icon
+				iconElementTag: 'span',
+				// tag for the icon element, span or i
+				circlePadding: [0, 0],
+				// padding around accuracy circle, value is passed to setBounds
+				metric: true,
+				// use metric or imperial units
+				onLocationError: function(err) {
+					alert(err.message)
+				},
+				// define an error callback function
+				onLocationOutsideMapBounds: function(context) { // called when outside map boundaries
+					alert(context.options.strings.outsideMapBoundsMsg);
+				},
+				showPopup: true,
+				// display a popup when the user click on the inner marker
+				strings: {
+					title: "Zeig mir wo ich bin",
+					// title of the locate control
+					metersUnit: "Meter",
+					// string for metric units
+					feetUnit: "Fuß",
+					// string for imperial units
+					popup: "Du bist innerhalb von {distance} {unit} von diesem Punkt.",
+					// text to appear if user clicks on circle
+					outsideMapBoundsMsg: "You seem located outside the boundaries of the map" // default message for onLocationOutsideMapBounds
+				},
+				locateOptions: {
+					enableHighAccuracy: true
+				} // define location options e.g enableHighAccuracy: true or maxZoom: 10
+			}).addTo(map);
 
+			lc.start();
+
+			return lc;
 		}
 
 	var showLessonsOnMap = function(seminarMeta, map) {
@@ -246,15 +291,17 @@ angular.module('starter.factories', [])
 
 			// alle Popups öffnen
 			markers.forEach(function(marker) {
-				marker.openPopup();
+				//marker.openPopup();
 			});
 			routingControl.hide();
+
+			return map;
 
 		}
 
 	return {
 		getDefaultMap: getDefaultMap,
-		showMyPosition: showMyPosition,
+		trackMyPosition: trackMyPosition,
 		showLessonsOnMap: showLessonsOnMap,
 		buildLessonsWaypoints: buildLessonsWaypoints,
 		drawRoute: drawRoute
