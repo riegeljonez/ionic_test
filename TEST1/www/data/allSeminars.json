@@ -1,0 +1,95 @@
+{
+  "allSeminars": [
+    {
+	  "seminarUID": "9d21a7f95a8040e0ab000a60b7ab0b9b",
+      "seminarName": "Business Knigge",
+      "seminarCategoryID":1,
+      "seminarManner":"Sightseeing",
+      "seminarFolder": "testendes-seminar",
+      "seminarDuration": "120 Minuten",
+      "seminarLessonsCount": 3
+    },
+    {
+	  "seminarUID": "49f9ff72977d4d5ca7f4e2d1719ff068",
+      "seminarName": "Business Modelling und Business Development",
+      "seminarCategoryID":1,
+      "seminarManner":"Sightseeing",
+      "seminarFolder": "testendes-seminar",
+      "seminarDuration": "120 Minuten",
+      "seminarLessonsCount": 3
+    },
+    {
+	  "seminarUID": "96a60d5f83e74d7c875473240964c40e",
+      "seminarName": "Change Management 1",
+      "seminarCategoryID":1,
+      "seminarManner":"Sightseeing",
+      "seminarFolder": "testendes-seminar",
+      "seminarDuration": "120 Minuten",
+      "seminarLessonsCount": 3
+    },
+    {
+	  "seminarUID": "9033692032274cbd94c35b57fe1a957a",
+      "seminarName": "Change Management 2",
+      "seminarCategoryID":1,
+      "seminarManner":"Sightseeing",
+      "seminarFolder": "testendes-seminar",
+      "seminarDuration": "120 Minuten",
+      "seminarLessonsCount": 3
+    },
+    {
+	  "seminarUID": "2e10d4408c964f859a0e446e23adc36b",
+      "seminarName": "Kinder erziehen",
+      "seminarCategoryID":2,
+      "seminarManner":"Sightseeing",
+      "seminarFolder": "testendes-seminar",
+      "seminarDuration": "120 Minuten",
+      "seminarLessonsCount": 3
+    },
+    {
+	  "seminarUID": "18deb6d29eb048bd9d56711529f6a15c",
+      "seminarName": "Modelleisenbahn bauen",
+      "seminarCategoryID":3,
+      "seminarManner":"Sightseeing",
+      "seminarFolder": "testendes-seminar",
+      "seminarDuration": "120 Minuten",
+      "seminarLessonsCount": 3
+    },
+    {
+	  "seminarUID": "a414ce29bf7c48f89a74ea720e4eb958",
+      "seminarName": "Kreativität trainieren",
+      "seminarCategoryID":4,
+      "seminarManner":"Sightseeing",
+      "seminarFolder": "testendes-seminar",
+      "seminarDuration": "120 Minuten",
+      "seminarLessonsCount": 3
+    },
+    {
+	  "seminarUID": "9dec8f74b84e40088b3231d74c26a628",
+      "seminarName": "Lernen lernen",
+      "seminarCategoryID":5,
+      "seminarManner":"Sightseeing",
+      "seminarFolder": "testendes-seminar",
+      "seminarDuration": "120 Minuten",
+      "seminarLessonsCount": 3
+    },
+    {
+	  "seminarUID": "f37b450b93494242a0abe6388b0abbf7",
+      "seminarName": "Tricks fürs Fahrradfahren",
+      "seminarCategoryID":6,
+      "seminarManner":"Sightseeing",
+      "seminarFolder": "testendes-seminar",
+      "seminarDuration": "120 Minuten",
+      "seminarLessonsCount": 3
+    },
+    {
+	  "seminarUID": "5289896bc8894ab792d1b4731285496a",
+      "seminarName": "Change Management 2",
+      "seminarCategoryID":7, 
+      "seminarManner":"Sightseeing",
+      "seminarFolder": "testendes-seminar",
+      "seminarDuration": "120 Minuten",
+      "seminarLessonsCount": 3
+    }
+    
+  ]
+}
