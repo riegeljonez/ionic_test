@@ -62,8 +62,8 @@ angular.module('starter.controllers', [])
 			
 			var drawResult = myMap.drawRoute(response);
 			
-			$scope.map = drawResult.karte;
-			$scope.markers = drawResult.markers;
+			$scope.map = drawResult.mapping;
+			$scope.markers = drawResult.marking;
 			$scope.lc = myMap.trackMyPosition($scope.map);
 			
 		});

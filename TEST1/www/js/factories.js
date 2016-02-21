@@ -211,13 +211,13 @@ angular.module('starter.factories', [])
 		lc.start();
 		
 		return lc;
-	};
-
+	}
+	
 	var buildLessonsWaypoints = function(seminarMeta) {
 		
 		var articlesUrl = "data/" + seminarMeta.seminarFolder + "/course/en/articles.json";
 		
-		var waypnts = [];
+		var lessonPositions = [];
 		
 		return $http.get(articlesUrl).then(function(response) {
 			
@@ -226,15 +226,15 @@ angular.module('starter.factories', [])
 				var lat = response.data[lesson].location.lat;
 				var lng = response.data[lesson].location.lng;
 				
-				waypnts.push({
+				lessonPositions.push({
 					latLng: L.latLng(lat, lng)
 				});
 			}
-			return waypnts;
+			return lessonPositions;
 		});
 	}
 
-	var drawRoute = function(waypnts) {
+	var drawRoute = function(lessonPositions) {
 		
 		L.Map = L.Map.extend({
 			openPopup: function(popup) {
@@ -250,7 +250,7 @@ angular.module('starter.factories', [])
 
 		var map = new L.Map('map', {
 			center: [47.618052, 10.710770],
-			zoom: 16
+			zoom: 18
 		});
 
 		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -261,7 +261,7 @@ angular.module('starter.factories', [])
 
 		var routingControl = L.Routing.control({
 			
-			waypoints: waypnts,
+			waypoints: lessonPositions,
 			draggableWaypoints: false,
 			createMarker: function(waypointIndex, waypoint, numberOfWaypoints) {
 				var marker = L.marker(waypoint.latLng, {
@@ -277,7 +277,7 @@ angular.module('starter.factories', [])
 		
 		routingControl.hide();
 		
-		return {"karte": map, "markers": markers};
+		return {"mapping": map, "marking": markers};
 	}
 
 	return {
