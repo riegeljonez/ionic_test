@@ -68,7 +68,8 @@ angular.module('starter.controllers', []).controller('AppCtrl', function($scope,
 		
 		myMap.buildLessonsWaypoints($scope.seminarMeta).then(function(response){
 			
-			myMap.drawRoute(response);
+			$scope.map = myMap.drawRoute(response);
+			$scope.lc = myMap.trackMyPosition($scope.map);
 			
 		});
 		
