@@ -1,18 +1,17 @@
 <ion-view view-title={{seminarMeta.seminarName}}>
   <ion-content data-tap-disabled="true">
-  <div id="map">
-	  
-  </div>
-  <div class="seminarinfo" style="bottom:20px; right:20px;position: absolute">
-	  
-
-      <button class="button" href="#/app/">
-        Start
-      </button>
-
-	  
-  </div>
-
-
-     </ion-content>
+      <div id="map">
+      </div>
+      <div class="seminarinfo" style="bottom:20px; right:20px;position: absolute">
+          <button class="button button-full button-assertive" ng-click="start()">
+            Start
+          </button>
+          <button class="button button-full button-assertive" ng-click="openCordovaWebView()">
+              Open In Cordova Webview
+          </button>
+          <button class="button button-full button-assertive" ng-click="openInAppBrowser()">
+              Open In App Browser
+          </button>
+      </div>
+  </ion-content>
 </ion-view>

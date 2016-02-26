@@ -61,7 +61,18 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage', 'starter.factories
                     controller: 'SeminarCtrl'
                 }
             }
+        })
+
+        .state('app.content', {
+            //url: '/categories/:categoryId/:seminarUID/:seminarFolder',
+            views: {
+                'menuContent': {
+                    templateUrl: 'data/testendes-seminar/index.html',
+                    controller: 'SeminarContentCtrl'
+                }
+            }
         });
+
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/categories');
 });
