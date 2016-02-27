@@ -52,13 +52,9 @@ angular.module('starter.controllers', [])
   SEMINAR CONTROLLER
 ===========================================================================*/
 
-<<<<<<< HEAD
-.controller('SeminarCtrl', function($scope, $stateParams, seminarByUID, $cordovaGeolocation, myMap) {
 
-=======
-.controller('SeminarCtrl', function($scope, $state, $stateParams, seminarByUID, $cordovaGeolocation, myMap) {
-	
->>>>>>> master
+.controller('SeminarCtrl', function($scope, $state, $stateParams, seminarByUID, $cordovaGeolocation, myMap, mySeminareData) {
+
 	seminarByUID.getSeminar($stateParams.seminarUID).then(function(data) {
 
 		$scope.seminarMeta = data;
@@ -70,6 +66,8 @@ angular.module('starter.controllers', [])
 			$scope.map = drawResult.mapping;
 			$scope.markers = drawResult.marking;
 			$scope.lc = myMap.trackMyPosition($scope.map);
+
+      mySeminareData.findOrCreateSeminarData($scope.seminarMeta.seminarUID);
 
 
 		});

@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'ngCordova', 'ngStorage', 'starter.factories', 'leaflet-directive', 'starter.controllers'])
+angular.module('starter', ['ionic', 'ngCordova', 'ngStorage', 'starter.factories', 'leaflet-directive', 'starter.controllers','ionic.utils'])
 
 .run(function ($ionicPlatform) {
 	$ionicPlatform.ready(function () {

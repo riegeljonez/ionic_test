@@ -99,10 +99,14 @@ angular.module('starter.factories', [])
 	var getSeminar = function(uid) {
 		return $http.get('data/allSeminars.json').then(function(response) {
 
+
+
 			var allSeminars = response.data.allSeminars;
 
 			for (var seminar in allSeminars) {
+
 				if (allSeminars[seminar].seminarUID == uid) {
+
 					return allSeminars[seminar];
 				}
 			}
@@ -113,8 +117,21 @@ angular.module('starter.factories', [])
 		});
 	};
 
+  var getLessonsFromSeminar = function(seminarFolder) {
+
+    var articlesUrl = "data/" + seminarFolder + "/course/en/articles.json";
+
+    var lessonPositions = [];
+
+    return $http.get(articlesUrl).then(function(response) {
+      return response.data;
+    });
+
+  };
+
 	return {
-		getSeminar: getSeminar
+		getSeminar: getSeminar,
+    getLessonsFromSeminar: getLessonsFromSeminar
 	};
 
 })
@@ -122,9 +139,79 @@ angular.module('starter.factories', [])
 /*===========================================================================
  FACTORY: CREATING AND WORKING ON LOCAL SEMINARDATA (SEMINAR PROGRESS ETC...)
  ===========================================================================*/
-  .factory('mySeminareData', function($http) {
+  .factory('mySeminareData', function($http, $localstorage, seminarByUID) {
 
-    var findOrCreateSeminarData = function(){
+    var findOrCreateSeminarData = function(uid){
+
+      var localSeminare = ($localstorage.getObject('seminare'));
+
+
+      // check if Seminar is already stored in localstorage
+      for(var localSeminar in localSeminare){
+
+        if(localSeminare[localSeminar].seminarUID==uid){
+
+          console.log("Found in local");
+          return localSeminare[localSeminar];
+
+        }
+
+      }
+
+      // Seminar not found in localstorage, generate entry in localstorage
+
+      localSeminare = [];
+
+
+      seminarByUID.getSeminar(uid).then(function(seminarData){
+
+
+
+        var newLocalSeminar = {"seminarName": seminarData.seminarName,
+          "seminarUID":uid,
+          "seminarCategoryID": seminarData.seminarCategoryID,
+          "seminarLessonsCount": seminarData.seminarLessonsCount,
+          "seminarFolder": seminarData.seminarFolder,
+          "active": false,
+          "finished": false,
+          "lessons": []
+        };
+
+
+        // Add lessons to created seminar
+
+        seminarByUID.getLessonsFromSeminar(seminarData.seminarFolder).then(function(lessonData){
+
+          var lessonCounter = 1;
+
+          for(var lesson in lessonData){
+
+            var  curLesson = lessonData[lesson];
+
+            var newLocalLesson = {"lessonName":curLesson.displayTitle ,
+              "reihenfolge": lessonCounter,
+              "latitude": curLesson.location.lat,
+              "longitude": curLesson.location.lng,
+              "geofenceUID": curLesson._id,
+              "freigeschaltet": false,
+              "bearbeitet": false,};
+
+            newLocalSeminar.lessons.push(newLocalLesson);
+
+            lessonCounter++;
+          }
+
+          localSeminare.push(newLocalSeminar);
+
+          // Save seminar in localstorage
+          console.log("local created");
+          console.log(localSeminare);
+          $localstorage.setObject("seminare", localSeminare);
+
+        });
+
+
+      });
 
     };
     return {
@@ -261,6 +348,8 @@ angular.module('starter.factories', [])
 			}
 		});
 
+    
+
 		var map = new L.Map('map', {
 			center: [47.618052, 10.710770],
 			zoom: 18
@@ -356,3 +445,22 @@ FACTORY: CHECKING ON CONNECTIVITY STATES(for Mobile and Desktop):
 		}
 	}
 })
+
+angular.module('ionic.utils', [])
+
+  .factory('$localstorage', ['$window', function($window) {
+    return {
+      set: function(key, value) {
+        $window.localStorage[key] = value;
+      },
+      get: function(key, defaultValue) {
+        return $window.localStorage[key] || defaultValue;
+      },
+      setObject: function(key, value) {
+        $window.localStorage[key] = JSON.stringify(value);
+      },
+      getObject: function(key) {
+        return JSON.parse($window.localStorage[key] || '{}');
+      }
+    }
+  }]);
