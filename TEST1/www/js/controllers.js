@@ -52,8 +52,13 @@ angular.module('starter.controllers', [])
   SEMINAR CONTROLLER
 ===========================================================================*/
 
+<<<<<<< HEAD
 .controller('SeminarCtrl', function($scope, $stateParams, seminarByUID, $cordovaGeolocation, myMap) {
 
+=======
+.controller('SeminarCtrl', function($scope, $state, $stateParams, seminarByUID, $cordovaGeolocation, myMap) {
+	
+>>>>>>> master
 	seminarByUID.getSeminar($stateParams.seminarUID).then(function(data) {
 
 		$scope.seminarMeta = data;
@@ -69,6 +74,55 @@ angular.module('starter.controllers', [])
 
 		});
 	});
+
+    $scope.start = function() {
+        $state.go("app.content");
+        console.log('stateChangeStart');
+    };
+
+    $scope.openCordovaWebView = function() {
+        // Open cordova webview if the url is in the whitelist otherwise opens in app browser
+
+
+        //window.open('', '_self');
+
+        window.location.href = 'data/testendes-seminar/index.html';
+        console.log('windowLocation');
+
+        //window.open('data/testendes-seminar/index.html', '_self');
+
+        /*openCordovaWebView.addEventListener('loadstop', function(event) {
+         if (event.url.match("../../app/categories")) {
+         openCordovaWebView.close();
+         }
+         }); */
+    };
+    $scope.openInAppBrowser = function() {
+        // Open in app browser
+        //window.open('data/testendes-seminar/index.html', '_blank');
+        var ref = window.open('data/testendes-seminar/scorm_test_harness.html', '_self', 'location=yes');
+        ref.addEventListener('exit', function(event) { alert(event.url); console.log(ref); });
+    };
+
+    $scope.exit = function() {
+        $state.go("app.seminar");
+        console.log('stateChangeExit');
+    };
+
+})
+
+
+/*===========================================================================
+ SEMINARCONTENT CONTROLLER
+ ===========================================================================*/
+
+.controller('SeminarContentCtrl', function( $scope, $state) {
+
+    $scope.exit = function() {
+        $state.go("app.seminar");
+        console.log('stateChangeExitcontent');
+    };
+
 })
 
 /*===========================================================================

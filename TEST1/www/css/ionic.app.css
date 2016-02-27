@@ -11215,3 +11215,12 @@ a.button {
 
 .item-complex .item-content {
   background-color: black; }
+
+.iframe-wrapper iframe {
+  width: 100%;
+  height: 100%; }
+
+.seminarContent {
+  width: 100%;
+  height: 100%;
+  border: 2px solid #EAAB00; }
