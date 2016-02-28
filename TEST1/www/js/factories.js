@@ -5,126 +5,226 @@ angular.module('starter.factories', [])
  ===========================================================================*/
 
 .factory('categoriesService', function($http) {
-	
+
 	var getCategoriesUsedBySeminars = function() {
-		
+
 		var categories = [];
-		
+
 		return $http.get('data/allSeminars.json').then(function(response) {
 			for (var seminar in response.data.allSeminars) {
-				
+
 				var catID = response.data.allSeminars[seminar].seminarCategoryID;
-				
+
 				getCatByID(catID).then(function(response) {
 					var catAlreadyExists = false;
-					
+
 					for (var category in categories) {
 						if (categories[category].id == response.id) {
 							catAlreadyExists = true;
 						}
 					}
-					
+
 					if (!catAlreadyExists) {
 						categories.push(response);
 					}
-					
+
 					return response;
 				});
 			}
-			
+
 			return categories;
 		});
 	};
-		
+
 	var getCatByID = function(id) {
 		return $http.get('data/categories.json').then(function(response) {
-			
+
 			var categories = response.data;
-			
+
 			for (var category in categories) {
 				if (categories[category].id == id) {
 					return categories[category];
 				}
 			}
-			
+
 			return {
 				"name": "Sorry! Category not found.",
 				"id": -1
 			};
 		});
 	};
-	
+
 	return {
 		getCategoriesUsedBySeminars: getCategoriesUsedBySeminars,
 		getCatByID: getCatByID
 	};
-	
+
 })
 
 /*===========================================================================
  FACTORY: FETCHING SEMINARE BY CATEGORY
  ===========================================================================*/
- 
+
 .factory('seminarsByCategoryService', function($http) {
-	
+
 	var getSeminars = function($stateParams) {
 		return $http.get('data/allSeminars.json').then(function(response) {
-			
+
 			var seminars = [];
-			
+
 			var allSeminars = response.data.allSeminars;
-			
+
 			for (var seminar in allSeminars) {
 				if (allSeminars[seminar].seminarCategoryID == $stateParams.categoryID) {
 					seminars.push(allSeminars[seminar]);
 				}
 			}
-			
+
 			return seminars;
 		});
 	};
-	
+
 	return {
 		getSeminars: getSeminars
 	};
-	
+
 })
 
 /*===========================================================================
  FACTORY: FETCHING SEMINAR BY UID TO GET META FOR LISTING
  ===========================================================================*/
- 
+
 .factory('seminarByUID', function($http) {
-	
+
 	var getSeminar = function(uid) {
 		return $http.get('data/allSeminars.json').then(function(response) {
-			
+
+
+
 			var allSeminars = response.data.allSeminars;
-			
+
 			for (var seminar in allSeminars) {
+
 				if (allSeminars[seminar].seminarUID == uid) {
+
 					return allSeminars[seminar];
 				}
 			}
-			
+
 			return {
 				"seminarName": "Seminar zur UID nicht gefunden"
 			};
 		});
 	};
-	
+
+  var getLessonsFromSeminar = function(seminarFolder) {
+
+    var articlesUrl = "data/" + seminarFolder + "/course/en/articles.json";
+
+    var lessonPositions = [];
+
+    return $http.get(articlesUrl).then(function(response) {
+      return response.data;
+    });
+
+  };
+
 	return {
-		getSeminar: getSeminar
+		getSeminar: getSeminar,
+    getLessonsFromSeminar: getLessonsFromSeminar
 	};
-	
+
 })
+
+/*===========================================================================
+ FACTORY: CREATING AND WORKING ON LOCAL SEMINARDATA (SEMINAR PROGRESS ETC...)
+ ===========================================================================*/
+  .factory('mySeminareData', function($http, $localstorage, seminarByUID) {
+
+    var findOrCreateSeminarData = function(uid){
+
+      var localSeminare = ($localstorage.getObject('seminare'));
+
+
+      // check if Seminar is already stored in localstorage
+      for(var localSeminar in localSeminare){
+
+        if(localSeminare[localSeminar].seminarUID==uid){
+
+          console.log("Found in local");
+          return localSeminare[localSeminar];
+
+        }
+
+      }
+
+      // Seminar not found in localstorage, generate entry in localstorage
+
+      localSeminare = [];
+
+
+      seminarByUID.getSeminar(uid).then(function(seminarData){
+
+
+
+        var newLocalSeminar = {"seminarName": seminarData.seminarName,
+          "seminarUID":uid,
+          "seminarCategoryID": seminarData.seminarCategoryID,
+          "seminarLessonsCount": seminarData.seminarLessonsCount,
+          "seminarFolder": seminarData.seminarFolder,
+          "active": false,
+          "finished": false,
+          "lessons": []
+        };
+
+
+        // Add lessons to created seminar
+
+        seminarByUID.getLessonsFromSeminar(seminarData.seminarFolder).then(function(lessonData){
+
+          var lessonCounter = 1;
+
+          for(var lesson in lessonData){
+
+            var  curLesson = lessonData[lesson];
+
+            var newLocalLesson = {"lessonName":curLesson.displayTitle ,
+              "reihenfolge": lessonCounter,
+              "latitude": curLesson.location.lat,
+              "longitude": curLesson.location.lng,
+              "geofenceUID": curLesson._id,
+              "freigeschaltet": false,
+              "bearbeitet": false,};
+
+            newLocalSeminar.lessons.push(newLocalLesson);
+
+            lessonCounter++;
+          }
+
+          localSeminare.push(newLocalSeminar);
+
+          // Save seminar in localstorage
+          console.log("local created");
+          console.log(localSeminare);
+          $localstorage.setObject("seminare", localSeminare);
+
+        });
+
+
+      });
+
+    };
+    return {
+      findOrCreateSeminarData:findOrCreateSeminarData
+    };
+  })
 
 /*===========================================================================
  FACTORY: CREATING AND INTERACTING WITH LEAFLET MAP
  ===========================================================================*/
- 
+
 .factory('myMap', function($cordovaGeolocation, $http) {
-	
+
 	/*var getDefaultMap = function() {
 		return {
 			defaults: {
@@ -207,25 +307,25 @@ angular.module('starter.factories', [])
 				enableHighAccuracy: true
 			} // define location options e.g enableHighAccuracy: true or maxZoom: 10
 		}).addTo(map);
-		
+
 		lc.start();
-		
+
 		return lc;
 	}
-	
+
 	var buildLessonsWaypoints = function(seminarMeta) {
-		
+
 		var articlesUrl = "data/" + seminarMeta.seminarFolder + "/course/en/articles.json";
-		
+
 		var lessonPositions = [];
-		
+
 		return $http.get(articlesUrl).then(function(response) {
-			
+
 			for (var lesson in response.data) {
-				
+
 				var lat = response.data[lesson].location.lat;
 				var lng = response.data[lesson].location.lng;
-				
+
 				lessonPositions.push({
 					latLng: L.latLng(lat, lng)
 				});
@@ -235,18 +335,20 @@ angular.module('starter.factories', [])
 	}
 
 	var drawRoute = function(lessonPositions) {
-		
+
 		L.Map = L.Map.extend({
 			openPopup: function(popup) {
-				
-				//this.closePopup();  
+
+				//this.closePopup();
 				this._popup = popup;
-				
+
 				return this.addLayer(popup).fire('popupopen', {
 					popup: this._popup
 				});
 			}
 		});
+
+    
 
 		var map = new L.Map('map', {
 			center: [47.618052, 10.710770],
@@ -260,23 +362,23 @@ angular.module('starter.factories', [])
 		var markers = [];
 
 		var routingControl = L.Routing.control({
-			
+
 			waypoints: lessonPositions,
 			draggableWaypoints: false,
 			createMarker: function(waypointIndex, waypoint, numberOfWaypoints) {
 				var marker = L.marker(waypoint.latLng, {
 					title: "Here I am!"
 				});
-				
+
 				marker.bindPopup("<b>Hello world!</b><br>I am a popup.");
 				markers.push(marker);
-				
+
 				return marker;
 			}
 		}).addTo(map);
-		
+
 		routingControl.hide();
-		
+
 		return {"mapping": map, "marking": markers};
 	}
 
@@ -293,7 +395,7 @@ FACTORY: CHECKING ON CONNECTIVITY STATES(for Mobile and Desktop):
 ===========================================================================*/
 
 .factory('ConnectivityMonitor', function($cordovaNetwork, $rootScope, $ionicPopup) {
-	
+
 	$rootScope.showAlert = function() {
 		var alertPopup = $ionicPopup.alert({
 			title: 'Keine Internetverbindung!',
@@ -303,7 +405,7 @@ FACTORY: CHECKING ON CONNECTIVITY STATES(for Mobile and Desktop):
 			console.log('Thank you for not eating my delicious ice cream cone');
 		});
 	};
-	
+
 	return {
 		isOnline: function() {
 			if (ionic.Platform.isWebView()) {
@@ -343,3 +445,22 @@ FACTORY: CHECKING ON CONNECTIVITY STATES(for Mobile and Desktop):
 		}
 	}
 })
+
+angular.module('ionic.utils', [])
+
+  .factory('$localstorage', ['$window', function($window) {
+    return {
+      set: function(key, value) {
+        $window.localStorage[key] = value;
+      },
+      get: function(key, defaultValue) {
+        return $window.localStorage[key] || defaultValue;
+      },
+      setObject: function(key, value) {
+        $window.localStorage[key] = JSON.stringify(value);
+      },
+      getObject: function(key) {
+        return JSON.parse($window.localStorage[key] || '{}');
+      }
+    }
+  }]);

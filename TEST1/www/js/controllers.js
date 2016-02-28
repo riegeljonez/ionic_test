@@ -15,7 +15,7 @@ angular.module('starter.controllers', [])
 /*===========================================================================
   MAIN APP CONTROLLER
 ===========================================================================*/
- 
+
 .controller('AppCtrl', function() {
 })
 
@@ -52,20 +52,24 @@ angular.module('starter.controllers', [])
   SEMINAR CONTROLLER
 ===========================================================================*/
 
-.controller('SeminarCtrl', function($scope, $state, $stateParams, seminarByUID, $cordovaGeolocation, myMap) {
-	
+
+.controller('SeminarCtrl', function($scope, $state, $stateParams, seminarByUID, $cordovaGeolocation, myMap, mySeminareData) {
+
 	seminarByUID.getSeminar($stateParams.seminarUID).then(function(data) {
-		
+
 		$scope.seminarMeta = data;
-		
+
 		myMap.buildLessonsWaypoints($scope.seminarMeta).then(function(response){
-			
+
 			var drawResult = myMap.drawRoute(response);
-			
+
 			$scope.map = drawResult.mapping;
 			$scope.markers = drawResult.marking;
 			$scope.lc = myMap.trackMyPosition($scope.map);
-			
+
+      mySeminareData.findOrCreateSeminarData($scope.seminarMeta.seminarUID);
+
+
 		});
 	});
 
@@ -130,7 +134,8 @@ angular.module('starter.controllers', [])
 	};
 	$scope.openInAppBrowser = function() {
 		// Open in app browser
-		window.open('data/testendes-seminar/index.html', '_blank');
+
+		var win = window.open('data/testendes-seminar/index.html', '_blank');
 	};
 	$scope.openCordovaWebView = function() {
 		// Open cordova webview if the url is in the whitelist otherwise opens in app browser
